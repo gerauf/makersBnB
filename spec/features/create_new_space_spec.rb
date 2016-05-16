@@ -1,3 +1,5 @@
+require 'tilt/erb'
+
 feature "create spaces" do
   scenario "create new space" do
     visit '/spaces/new'

@@ -1,3 +1,5 @@
+require 'tilt/erb'
+
 feature "registering" do
   scenario "creating an account" do
     visit '/users/new'
