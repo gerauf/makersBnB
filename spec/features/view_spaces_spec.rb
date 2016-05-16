@@ -1,3 +1,5 @@
+require 'tilt/erb'
+
 feature "viewing all spaces" do
   scenario "visiting index page" do
     visit '/'
