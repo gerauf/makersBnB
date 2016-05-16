@@ -3,6 +3,7 @@ require 'sinatra/base'
 class MakersBnB < Sinatra::Base
   get '/' do
     'Hello MakersBnB!'
+    
   end
 
   # start the server if ruby file executed directly
