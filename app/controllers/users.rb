@@ -1,20 +1,24 @@
-ENV["RACK_ENV"] ||= "development"
+class MakersBnB < Sinatra::Base
+  enable :sessions
 
-require 'sinatra/base'
-
-require_relative 'data_mapper_setup'
-
-require_relative 'server'
-
-class Users < Sinatra::Base
-  get '/users' do
-    redirect '/users/new'
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
   end
 
   get '/users/new' do
-    'Hello Users!'
+    erb :'users/new'
   end
 
-  # start the server if ruby file executed directly
-  run! if app_file == $0
+  post '/users' do
+    user = User.create(first_name: params[:first_name],
+            last_name: params[:last_name],
+            email: params[:email],
+            password: params[:password],
+            password_confirmation: params[:password_confirm])
+    session[:user_id] = user.id
+    redirect to '/'
+  end
+
 end

@@ -11,7 +11,7 @@ class MakersBnB < Sinatra::Base
   set :root, File.join(File.dirname(__FILE__))
 
   get '/' do
-    'Hello MakersBnB!'
+    erb :index
   end
 
   # start the server if ruby file executed directly
