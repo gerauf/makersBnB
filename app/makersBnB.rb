@@ -5,8 +5,11 @@ require 'sinatra/base'
 require_relative 'data_mapper_setup'
 
 require_relative 'server'
+require_relative 'controllers/users'
 
 class MakersBnB < Sinatra::Base
+  set :root, File.join(File.dirname(__FILE__))
+
   get '/' do
     'Hello MakersBnB!'
   end
