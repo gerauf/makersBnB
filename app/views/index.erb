@@ -1,8 +1,13 @@
+<link rel="stylesheet" href="/styles.css" type="text/css">
+
+
 <ul id="spaces">
 
   <% @spaces.each do |space| %>
-  <li>
-    <%=space.name %>
-  </li>
+    <article class="space">
+      <h2 class="space_head"><%=space.name %></h2>
+    <span class="space_desc"><%=space.description%></span><br>
+    <span class="space_cost">Cost per night £<%=space.price%></span>
+    </article>
   <% end %>
 </ul>

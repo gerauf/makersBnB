@@ -1,0 +1,19 @@
+.space {
+  border: solid grey 2px;
+  margin: 5px;
+  padding: 4px;
+}
+
+.space_desc {
+
+}
+
+
+.space_cost {
+
+}
+
+.space_head {
+  margin-top: 2px;
+  color: red;
+}
