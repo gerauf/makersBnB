@@ -6,8 +6,3 @@ def sign_up(details={})
     fill_in :password, with: details[:password]
     fill_in :password_confirm, with: details[:password_confirm]
 end
-
-def generic_sign_in
-  sign_up({first_name: 'Alice', last_name: 'Cooper', email: 'rock4eva@gmail.com',
-    password: 'rock', password_confirm: 'rock'})
-end
