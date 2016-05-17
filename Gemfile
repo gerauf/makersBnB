@@ -12,6 +12,7 @@ gem "rake"
 gem "dm-postgres-adapter"
 gem "bcrypt"
 gem "pg"
+gem "sinatra-flash"
 
 group :test do
   gem "rspec"

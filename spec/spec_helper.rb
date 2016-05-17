@@ -4,6 +4,8 @@ ENV['RACK_ENV'] = 'test'
 
 require File.join(File.dirname(__FILE__), '..', './app/makersBnB.rb')
 
+require_relative 'web_helpers'
+
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
@@ -35,11 +37,11 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end
-  
+
   config.before(:each) do
     DatabaseCleaner.start
   end
-  
+
   config.after(:each) do
     DatabaseCleaner.clean
   end
