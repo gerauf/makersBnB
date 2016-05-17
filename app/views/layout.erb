@@ -7,6 +7,10 @@
 
     <% if current_user %>
     Logged in as: <%= current_user.first_name + " " + current_user.last_name %>
+    <form action="/sessions" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit" name="Log Out">Log Out</button>
+    </form>
     <% end %>
 
     <% if flash[:errors]%>

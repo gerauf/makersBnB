@@ -1,23 +1,16 @@
 feature "registering" do
 
-  user = {first_name: 'andy', last_name: 'peters', email: 'a@gmail.com',
-          password: '123', password_confirm: '123'}
-  bad_email_user = {first_name: 'andy', last_name: 'peters', email: 'a@gmail',
-          password: '123', password_confirm: '123'}
-  bad_password_user = {first_name: 'a', last_name: 'b', email: 'a@gmail.com',
-          password: '123', password_confirm: 'abc'}
-
   scenario "creating an account" do
-    sign_up(user)
+    sign_up new_user
     expect{click_button "Create Account"}.to change(User, :count).by 1
     expect(current_path).to eq '/'
     expect(page).to have_content "Logged in as: andy peters"
   end
 
   scenario 'email address should be unique' do
-    sign_up(user)
+    sign_up new_user
     click_button "Create Account"
-    sign_up(user)
+    sign_up new_user
     expect {click_button "Create Account"}.not_to change(User, :count)
     expect(current_path).to eq '/users'
     expect(page).to have_content 'Email is already taken'
@@ -33,7 +26,7 @@ feature "registering" do
   end
 
   scenario 'Password confirmation must match password' do
-    sign_up(bad_password_user)
+    sign_up bad_password_user
     expect {click_button 'Create Account'}.not_to change(User, :count)
     expect(current_path).to eq '/users'
     expect(page).to have_content 'Password does not match the confirmation'
