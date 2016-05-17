@@ -1,0 +1,14 @@
+<article class="user_info">
+  Name: <%=current_user.first_name%> <%=current_user.last_name%>
+  Email: <%=current_user.email%>
+</article>
+
+<ul class="user_spaces">
+  <% @spaces.each do |space| %>
+    <article class="space">
+      <h2 class="space_head"><%=space.name %></h2>
+    <span class="space_desc"><%=space.description%></span><br>
+    <span class="space_cost">Cost per night £<%=space.price%></span>
+  </article>
+  <% end %>
+</ul>

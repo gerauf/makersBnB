@@ -26,5 +26,10 @@ class MakersBnB < Sinatra::Base
     end
   end
 
+  get '/users' do
+    @spaces = Space.all
+    erb :'users/home'
+  end
+
 
 end

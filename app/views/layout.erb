@@ -16,7 +16,7 @@
     <% if flash[:errors]%>
     <%= flash[:errors]%>
     <% end %>
-    
+
     <div id="log_out">
       <% if flash[:notice]%>
       <%= flash[:notice]%>
@@ -28,20 +28,6 @@
 
     <%=yield%>
 
-    <!-- <h1>MBNB</h1>
-    <div class="log_in">
-      <form class="" action="/" method="post">
-        <label for="email">email:</label>
-          <p><input type="text" name="email"></p>
-          <label for="password">Password</label>
-            <p><input type="password" name="password"></p>
-          <p><input type="submit" value="Log In"></p>
-      </form>
-      <form class="" action="/user/new" method="get">
-        <p<input type="submit" value="Join MBNB!"></p>
-
-      </form>
-    </div> -->
 
   </body>
 </html>
