@@ -1,5 +1,13 @@
 feature "create spaces" do
   scenario "create new space" do
+    visit '/users/new'
+      fill_in :first_name, with: "Alice"
+      fill_in :last_name, with: "Cooper"
+      fill_in :email, with: "rock4life@gmail.com"
+      fill_in :password, with: "rocking"
+      fill_in :password_confirm, with: "rocking"
+      click_button "Create Account"
+      
     visit '/spaces/new'
     fill_in :name, with: "Commercial Road"
     fill_in :description, with: "Tidy little place"
