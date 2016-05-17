@@ -1,20 +1,20 @@
 feature "registering" do
 
- scenario "creating an account" do
-   sign_up new_user
-   expect{click_button "Create Account"}.to change(User, :count).by 1
-   expect(current_path).to eq '/'
-   expect(page).to have_content "Logged in as: andy peters"
- end
+  scenario "creating an account" do
+    sign_up new_user
+    expect{click_button "Create Account"}.to change(User, :count).by 1
+    expect(current_path).to eq '/'
+    expect(page).to have_content "Logged in as: andy peters"
+  end
 
- scenario 'email address should be unique' do
-   sign_up new_user
-   click_button "Create Account"
-   sign_up new_user
-   expect {click_button "Create Account"}.not_to change(User, :count)
-   expect(current_path).to eq '/users'
-   expect(page).to have_content 'Email is already taken'
- end
+  scenario 'email address should be unique' do
+    sign_up new_user
+    click_button "Create Account"
+    sign_up new_user
+    expect {click_button "Create Account"}.not_to change(User, :count)
+    expect(current_path).to eq '/users'
+    expect(page).to have_content 'Email is already taken'
+  end
 
  scenario 'all fields need to be filled in' do
    sign_up
