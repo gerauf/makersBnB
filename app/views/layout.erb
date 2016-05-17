@@ -16,6 +16,15 @@
     <% if flash[:errors]%>
     <%= flash[:errors]%>
     <% end %>
+    
+    <div id="log_out">
+      <% if flash[:notice]%>
+      <%= flash[:notice]%>
+      <% end %>
+
+    </div>
+
+
 
     <%=yield%>
 
