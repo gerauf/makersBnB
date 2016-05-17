@@ -12,4 +12,14 @@ feature 'Sessions' do
     click_button 'Log Out'
     expect(page).to have_content 'Log Out complete. Thanks!'
   end
+
+  scenario 'log in' do
+    sign_up new_user
+    click_button "Create Account"
+    click_button 'Log Out'
+    fill_in :login_email, with: "a@gmail.com"
+    fill_in :login_password, with: "123"
+    click_button 'Log In'
+    expect(page).to have_content "Logged in as:"
+  end
 end
