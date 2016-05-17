@@ -9,6 +9,10 @@
     Logged in as: <%= current_user.first_name + " " + current_user.last_name %>
     <% end %>
 
+    <% if flash[:errors]%>
+    <%= flash[:errors]%>
+    <% end %>
+
     <%=yield%>
 
     <!-- <h1>MBNB</h1>
