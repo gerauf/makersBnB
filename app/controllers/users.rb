@@ -1,5 +1,4 @@
 class MakersBnB < Sinatra::Base
-  enable :sessions
 
   helpers do
     def current_user
@@ -18,7 +17,12 @@ class MakersBnB < Sinatra::Base
             password: params[:password],
             password_confirmation: params[:password_confirm])
     session[:user_id] = user.id
-    redirect to '/'
+    if user.save
+      redirect '/'
+    else
+      flash.next[:errors] = user.errors.full_messages
+      redirect '/users/new'
+    end
   end
 
 end
