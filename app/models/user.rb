@@ -2,6 +2,7 @@ require 'bcrypt'
 
 class User
   include DataMapper::Resource
+  has n, :spaces
 
     property :id, Serial
     property :first_name, String, required: true
