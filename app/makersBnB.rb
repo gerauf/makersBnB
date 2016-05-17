@@ -21,6 +21,16 @@ register Sinatra::Flash
     erb :index
   end
 
+  post '/bookings' do
+    id = params[:id]
+    redirect '/bookings/' + id
+  end
+
+  get '/bookings/:id' do
+    @space = Space.get(params['id'])
+    erb :'bookings/new'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
 end
