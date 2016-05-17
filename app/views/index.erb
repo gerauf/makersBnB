@@ -7,6 +7,12 @@
       <h2 class="space_head"><%=space.name %></h2>
     <span class="space_desc"><%=space.description%></span><br>
     <span class="space_cost">Cost per night £<%=space.price%></span>
+    <form action='/bookings' method="post">
+      <p>
+        <input type="hidden" name="id" value="<%=space.id%>">
+        <button type="submit" name="Book">Book</button>
+      </p>
+    </form>
     </article>
   <% end %>
 </ul>
