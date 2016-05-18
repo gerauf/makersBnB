@@ -1,55 +1,49 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/styles.css" type="text/css">
-    <title>MakersBnB</title>
-  </head>
+<html lang='en'>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css" type="text/css">
 
-  <body>
+  <title>MakersBnB</title>
+</head>
+<body>
 
-    <% if current_user %>
-    Logged in as: <%= current_user.first_name + " " + current_user.last_name %>
-    <form action="/sessions" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit" name="Log Out">Log Out</button>
-    </form>
-
-    <% else %>
-
-    <form action="/sessions" method="post">
-      Email: <input type="email" name="login_email">
-      Password: <input type="password" name="login_password">
-      <button type="submit"> Log In </button>
-    </form>
-
-    <% end %>
-
-    <% if flash[:errors]%>
-    <%= flash[:errors]%>
-    <% end %>
-    
-    <div id="log_out">
-      <% if flash[:notice]%>
-      <%= flash[:notice]%>
+  <h2>MakersBnB</h2>
+  <div class="container">
+      <%if current_user %>
+        <div class="form-group">
+          <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+          <form action="/sessions" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button class="marasclass" type="submit" name="Log Out">Log Out</button>
+          </form>
+        </div>
+      <% else %>
+      <div class="form-group">
+        <form action="/sessions" method="post">
+          <label for="log_in_email">Email:</label>
+          <input type="email" class="form-control" id="log_in_email" placeholder="Enter email" name="login_email">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="login_password">
+          <button type="submit"> Log In </button>
+        </form>
       <% end %>
-    </div>
+      </div>
 
-    <%=yield%>
+        <% if flash[:errors]%>
+        <%= flash[:errors]%>
+        <% end %>
 
-    <!-- <h1>MBNB</h1>
-    <div class="log_in">
-      <form class="" action="/" method="post">
-        <label for="email">email:</label>
-          <p><input type="text" name="email"></p>
-          <label for="password">Password</label>
-            <p><input type="password" name="password"></p>
-          <p><input type="submit" value="Log In"></p>
-      </form>
-      <form class="" action="/user/new" method="get">
-        <p<input type="submit" value="Join MBNB!"></p>
+        <!-- <div id="log_out"> -->
+           <% if flash[:notice]%>
+          <%= flash[:notice]%>
+          <% end %>
+        <!-- </div> -->
 
-      </form>
-    </div> -->
+        <%=yield%>
 
-  </body>
-</html>
+    </form>
+  </div>
+</body>
