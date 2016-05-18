@@ -1,11 +1,5 @@
 class MakersBnB < Sinatra::Base
 
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
-  end
-
   get '/users/new' do
     @user = User.new
     erb :'users/new'

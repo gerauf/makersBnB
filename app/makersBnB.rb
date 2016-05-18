@@ -14,9 +14,19 @@ require_relative 'controllers/requests'
 
 class MakersBnB < Sinatra::Base
 
-set :root, File.join(File.dirname(__FILE__))
-enable :sessions
-register Sinatra::Flash
+  set :root, File.join(File.dirname(__FILE__))
+  enable :sessions
+  register Sinatra::Flash
+
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+
+    def own_space? space_id
+      current_user.spaces.include? Space.first(space_id)
+    end
+  end
 
   get '/' do
     @spaces = Space.all
