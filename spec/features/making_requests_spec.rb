@@ -7,10 +7,11 @@ feature 'making requests' do
     end
   end
 
-  scenario "clicking button sends a request" do
+  scenario "clicking button makes a request" do
     sign_up_and_create_space
     click_button 'Log Out'
-
+    sign_up keith_lemon
+    click_button "Create Account"
     within 'ul#spaces' do
        expect{click_button "Request to book"}.to change(Request, :count).by 1
     end
@@ -23,10 +24,9 @@ feature 'making requests' do
       expect(page).to have_content "Commercial Road"
       expect(page).to have_content "Not confirmed"
     end
-    within "ul.requests_received" do
-      expect(page).to have_content "Requests I've received"
-      expect(page).to have_content "Commercial Road"
-      expect(page).to have_content "Not confirmed"
-    end
+  end
+
+  scenario "can't book own space" do
+    
   end
 end

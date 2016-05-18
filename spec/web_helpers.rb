@@ -12,6 +12,11 @@ def new_user
   password: '123', password_confirm: '123'}
 end
 
+def keith_lemon
+  {first_name: 'keith', last_name: 'lemon', email: 'kl@gmail.com',
+  password: '123', password_confirm: '123'}
+end
+
 def bad_email_user
   {first_name: 'andy', last_name: 'peters', email: 'a@gmail',
   password: '123', password_confirm: '123'}
