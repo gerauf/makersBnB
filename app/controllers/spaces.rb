@@ -1,4 +1,10 @@
 class MakersBnB < Sinatra::Base
+
+  get '/spaces' do
+    @spaces = Space.all
+    erb :index
+  end
+
   get '/spaces/new' do
     erb :'spaces/new'
   end
@@ -8,6 +14,7 @@ class MakersBnB < Sinatra::Base
                  description: params[:description],
                  price: params[:price])
     space.save
-    redirect '/'
+    redirect '/spaces'
   end
+  
 end

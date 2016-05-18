@@ -29,8 +29,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/' do
-    @spaces = Space.all
-    erb :index
+    @user = User.new
+    erb :'users/new'
   end
 
   # start the server if ruby file executed directly

@@ -1,41 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/styles.css" type="text/css">
-    <title>MakersBnB</title>
-  </head>
+<html lang='en'>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css" type="text/css">
 
-  <body>
+  <title>MakersBnB</title>
+</head>
+<body>
 
-    <% if current_user %>
-    Logged in as: <%= current_user.first_name + " " + current_user.last_name %>
-    <form action="/sessions" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit" name="Log Out">Log Out</button>
-    </form>
+  <h2>MakersBnB</h2>
+  <div class="container">
+    <%if current_user %>
+    <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+      <a href="/spaces/new">spaces</a><span> |</span>
+      <a href="/requests">requests</a><span> |</span>
 
-    <% else %>
-
-    <form action="/sessions" method="post">
-      Email: <input type="email" name="login_email">
-      Password: <input type="password" name="login_password">
-      <button type="submit"> Log In </button>
-    </form>
-
+      <div class="form-group">
+        <form id="link_style" action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" name="Log Out">Log Out</button>
+        </form>
+      </div>
+    <% else%>
+      <a href="#">About</a>
+      <a href="/sessions/new">login</a>
     <% end %>
+  </div>
 
-    <% if flash[:errors]%>
+  <% if flash[:errors]%>
     <%= flash[:errors]%>
-    <% end %>
+  <% end %>
 
-    <div id="log_out">
-      <% if flash[:notice]%>
-      <%= flash[:notice]%>
-      <% end %>
-    </div>
+  <% if flash[:notice]%>
+    <%= flash[:notice]%>
+  <% end %>
 
     <%=yield%>
 
-
-  </body>
-</html>
+</body>
