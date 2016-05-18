@@ -13,23 +13,19 @@
   <h2>MakersBnB</h2>
   <div class="container">
     <%if current_user %>
+    <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+      <a href="/spaces/new">spaces</a><span> |</span>
+      <a href="/requests">requests</a><span> |</span>
+
       <div class="form-group">
-        <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
-        <form action="/sessions" method="post">
+        <form id="link_style" action="/sessions" method="post">
           <input type="hidden" name="_method" value="delete">
-          <button class="marasclass" type="submit" name="Log Out">Log Out</button>
+          <button type="submit" name="Log Out">Log Out</button>
         </form>
       </div>
-    <% else %>
-      <div class="form-group">
-        <form action="/sessions" method="post">
-          <label for="log_in_email">Email:</label>
-          <input type="email" class="form-control" id="log_in_email" placeholder="Enter email" name="login_email">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="login_password">
-          <button type="submit"> Log In </button>
-        </form>
-      </div>
+    <% else%>
+      <a href="#">About</a>
+      <a href="/sessions/new">login</a>
     <% end %>
   </div>
 

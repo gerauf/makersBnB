@@ -5,7 +5,7 @@ class MakersBnB < Sinatra::Base
     user_id = current_user.id
     Request.first_or_create(user_id: user_id,
                             space_id: space_id) unless own_space? space_id
-    redirect '/'
+    redirect '/spaces'
   end
 
   get '/requests' do

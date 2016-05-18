@@ -1,9 +1,15 @@
 class MakersBnB < Sinatra::Base
 
+
+  get '/sessions/new' do
+      erb :'sessions/new'
+  end
+
+
   delete '/sessions' do
     session[:user_id] = nil
     flash.keep[:notice] = 'Log Out complete. Thanks!'
-    redirect '/'
+    redirect '/spaces'
    end
 
   post '/sessions' do
@@ -13,6 +19,6 @@ class MakersBnB < Sinatra::Base
     # else
     #   flash.now[:errors] = @user.errors.full_messages
     end
-    redirect '/'
+    redirect '/spaces'
   end
 end
