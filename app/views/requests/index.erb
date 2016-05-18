@@ -2,5 +2,17 @@
 
 <ul class="requests_made">
   <h3>Requests I've made</h3>
-
+  <%@requests_made.each do |request|%>
+  <%space = Space.first(id: request.space_id)%>
+  <li><%=space.name%></li>
+  <li>Not confirmed</li>
+  <%end%>
+</ul>
+<ul class="requests_received">
+  <h3>Requests I've received</h3>
+  <%@requests_received.each do |request|%>
+  <%space = Space.first(id: request.space_id)%>
+  <li><%=space.name%></li>
+  <li>Not confirmed</li>
+  <%end%>
 </ul>
