@@ -2,7 +2,7 @@ feature "account page" do
   scenario "user has their own account page" do
     sign_up_and_create_space
     within 'ul#spaces' do
-       click_button "Book"
+       click_button "Request to book"
     end
     visit '/users'
     within "article.user_info" do

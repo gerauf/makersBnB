@@ -28,7 +28,7 @@ class MakersBnB < Sinatra::Base
 
   get '/users' do
     @spaces = Space.all
-    erb :'users/home'
+    erb :'users/profile'
   end
 
 
