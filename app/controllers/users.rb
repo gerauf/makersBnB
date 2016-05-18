@@ -25,6 +25,4 @@ class MakersBnB < Sinatra::Base
       erb :'users/new'
     end
   end
-
-
 end
