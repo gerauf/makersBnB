@@ -13,10 +13,10 @@ class MakersBnB < Sinatra::Base
 
   post '/users' do
     @user = User.create(first_name: params[:first_name],
-            last_name: params[:last_name],
-            email: params[:email],
-            password: params[:password],
-            password_confirmation: params[:password_confirm])
+                        last_name: params[:last_name],
+                        email: params[:email],
+                        password: params[:password],
+                        password_confirmation: params[:password_confirm])
     session[:user_id] = @user.id
     if @user.save
       redirect '/'
@@ -25,4 +25,10 @@ class MakersBnB < Sinatra::Base
       erb :'users/new'
     end
   end
+
+  get '/users' do
+    @spaces = Space.all
+    erb :'users/profile'
+  end
+
 end

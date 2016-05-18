@@ -12,15 +12,15 @@
 
   <h2>MakersBnB</h2>
   <div class="container">
-      <%if current_user %>
-        <div class="form-group">
-          <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
-          <form action="/sessions" method="post">
-            <input type="hidden" name="_method" value="delete">
-            <button class="marasclass" type="submit" name="Log Out">Log Out</button>
-          </form>
-        </div>
-      <% else %>
+    <%if current_user %>
+      <div class="form-group">
+        <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+        <form action="/sessions" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button class="marasclass" type="submit" name="Log Out">Log Out</button>
+        </form>
+      </div>
+    <% else %>
       <div class="form-group">
         <form action="/sessions" method="post">
           <label for="log_in_email">Email:</label>
@@ -29,21 +29,18 @@
             <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="login_password">
           <button type="submit"> Log In </button>
         </form>
-      <% end %>
       </div>
-
-        <% if flash[:errors]%>
-        <%= flash[:errors]%>
-        <% end %>
-
-        <!-- <div id="log_out"> -->
-           <% if flash[:notice]%>
-          <%= flash[:notice]%>
-          <% end %>
-        <!-- </div> -->
-
-        <%=yield%>
-
-    </form>
+    <% end %>
   </div>
+
+  <% if flash[:errors]%>
+    <%= flash[:errors]%>
+  <% end %>
+
+  <% if flash[:notice]%>
+    <%= flash[:notice]%>
+  <% end %>
+
+    <%=yield%>
+
 </body>

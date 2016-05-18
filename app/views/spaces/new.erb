@@ -1,16 +1,9 @@
-<!DOCTYPE html>
 
-<head>
-  <title>Makers BnB</title>
-</head>
-
-<body>
-  <form action="/spaces" method="post" id="space_input">
-    <p>Property name<br><input type="text" name="name"></p>
-    <p>Description<br>
-      <textarea class="fergsarea" rows="4" cols="40" form="space_input" name="description"></textarea>
-    </p>
-    <p>Cost per night<br><input type="number" name="price"></p>
-    <button class="marasclass" type="submit" name="create space">create space</button>
-  </form>
-</body>
+<form action="/spaces" method="post" id="space_input">
+  <p>Property name<br><input type="text" name="name"></p>
+  <p>Description<br>
+    <textarea rows="4" cols="40" form="space_input" name="description"></textarea>
+  </p>
+  <p>Cost per night<br><input type="number" name="price"></p>
+  <button type="submit" name="create space">create space</button>
+</form>

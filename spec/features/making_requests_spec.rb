@@ -3,19 +3,30 @@ feature 'making requests' do
   scenario 'listings have a booking option' do
     sign_up_and_create_space
     within 'ul#spaces' do
-       find_button "Book"
+       find_button "Request to book"
     end
   end
 
-  scenario "clicking button books the space" do
+  scenario "clicking button makes a request" do
     sign_up_and_create_space
+    click_button 'Log Out'
+    sign_up keith_lemon
+    click_button "Create Account"
     within 'ul#spaces' do
-       click_button "Book"
+       expect{click_button "Request to book"}.to change(Request, :count).by 1
     end
-    expect(page).to have_content "Booking Page"
-    expect(page).to have_content "Title: Commercial Road"
-    expect(page).to have_content "Description: Tidy little place"
-    expect(page).to have_content "Price per night: £100"
-    expect(page).to have_content "You have booked!!!"
+    visit '/requests'
+    within "h1" do
+      expect(page).to have_content "Requests"
+    end
+    within "ul.requests_made" do
+      expect(page).to have_content "Requests I've made"
+      expect(page).to have_content "Commercial Road"
+      expect(page).to have_content "Not confirmed"
+    end
+  end
+
+  scenario "can't book own space" do
+    
   end
 end
