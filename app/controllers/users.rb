@@ -31,5 +31,4 @@ class MakersBnB < Sinatra::Base
     erb :'users/profile'
   end
 
-
 end

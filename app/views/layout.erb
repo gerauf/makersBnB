@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MBNB</title>
+    <link rel="stylesheet" href="/styles.css" type="text/css">
+    <title>MakersBnB</title>
   </head>
+
   <body>
 
     <% if current_user %>
@@ -11,6 +13,15 @@
       <input type="hidden" name="_method" value="delete">
       <button type="submit" name="Log Out">Log Out</button>
     </form>
+
+    <% else %>
+
+    <form action="/sessions" method="post">
+      Email: <input type="email" name="login_email">
+      Password: <input type="password" name="login_password">
+      <button type="submit"> Log In </button>
+    </form>
+
     <% end %>
 
     <% if flash[:errors]%>
@@ -21,10 +32,7 @@
       <% if flash[:notice]%>
       <%= flash[:notice]%>
       <% end %>
-
     </div>
-
-
 
     <%=yield%>
 
