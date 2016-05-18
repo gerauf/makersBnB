@@ -9,6 +9,7 @@ require_relative 'server'
 require_relative 'controllers/users'
 require_relative 'controllers/spaces'
 require_relative 'controllers/sessions'
+require_relative 'controllers/requests'
 
 
 class MakersBnB < Sinatra::Base
@@ -20,16 +21,6 @@ register Sinatra::Flash
   get '/' do
     @spaces = Space.all
     erb :index
-  end
-
-  post '/bookings' do
-    id = params[:id]
-    redirect '/bookings/' + id
-  end
-
-  get '/bookings/:id' do
-    @space = Space.get(params['id'])
-    erb :'bookings/new'
   end
 
   # start the server if ruby file executed directly

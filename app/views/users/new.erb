@@ -1,26 +1,25 @@
-    <div class="header">
-      <h3>Your details</h3>
-    </div>
-      <form action='/users' method='post'>
-        <div id='fields'>
-          <label for='first_name'>first name</label>
-            <p><input type='text' name='first_name' value="<%=@user.first_name%>"></p>
+<div class="header">
+  <h3>Your details</h3>
+</div>
+<form action='/users' method='post'>
+  <div id='fields'>
+    <label for='first_name'>first name</label>
+      <p><input type='text' name='first_name' value="<%=@user.first_name%>"></p>
 
-          <label for='last_name'>last name</label>
-            <p><input type='text' name='last_name' value="<%=@user.last_name%>"></p>
+    <label for='last_name'>last name</label>
+      <p><input type='text' name='last_name' value="<%=@user.last_name%>"></p>
 
-          <label for='email'>email</label>
-            <p><input type='email' name='email' value="<%=@user.email%>"></p>
+    <label for='email'>email</label>
+      <p><input type='email' name='email' value="<%=@user.email%>"></p>
 
-          <label for='password'>password:</label>
-            <p><input type='password' name='password'></p>
+    <label for='password'>password:</label>
+      <p><input type='password' name='password'></p>
 
-          <label for='password_confirm'>confirm password:</label>
-            <p><input type='password' name='password_confirm'></p>
-        </div>
+    <label for='password_confirm'>confirm password:</label>
+      <p><input type='password' name='password_confirm'></p>
+  </div>
 
-        <div id='submit'>
-          <p><input type='submit' value='Create Account'><p>
-        </div>
-      </form>
-
+  <div id='submit'>
+    <p><input type='submit' value='Create Account'><p>
+  </div>
+</form>

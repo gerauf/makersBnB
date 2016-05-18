@@ -1,16 +1,14 @@
-<ul id="spaces">
+<article class="user_info">
+  Name: <%=current_user.first_name%> <%=current_user.last_name%>
+  Email: <%=current_user.email%>
+</article>
 
+<ul class="user_spaces">
   <% @spaces.each do |space| %>
     <article class="space">
       <h2 class="space_head"><%=space.name %></h2>
     <span class="space_desc"><%=space.description%></span><br>
     <span class="space_cost">Cost per night £<%=space.price%></span>
-    <form action='/requests' method="post">
-      <p>
-        <input type="hidden" name="space_id" value="<%=space.id%>">
-        <button type="submit" name="Request">Request to book</button>
-      </p>
-    </form>
-    </article>
+  </article>
   <% end %>
 </ul>
