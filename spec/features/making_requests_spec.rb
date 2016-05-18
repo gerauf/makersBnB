@@ -9,6 +9,8 @@ feature 'making requests' do
 
   scenario "clicking button sends a request" do
     sign_up_and_create_space
+    click_button 'Log Out'
+
     within 'ul#spaces' do
        expect{click_button "Request to book"}.to change(Request, :count).by 1
     end
