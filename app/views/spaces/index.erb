@@ -1,11 +1,11 @@
 
 <section id="search_area">
   <h3>
-  <form action="/spaces" method="get">
+  <form action="/spaces/search" method="post">
     <h4>Start Date</h4>
-      <input type="date" name="start_date">
+      <input type="date" name="start_date" value="<%=@dates.first%>">
       <h4>End Date</h4>
-      <input type="date" name="end_date">
+      <input type="date" name="end_date" value="<%=@dates.last%>">
       <p>
       </p>
     <button class="btn btn-danger btn-sm" type="submit">Search</button>

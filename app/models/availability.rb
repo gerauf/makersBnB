@@ -7,4 +7,5 @@ class Availability
 
   belongs_to :space
 
+
 end
