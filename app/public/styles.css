@@ -5,9 +5,16 @@
 
 }
 
+
 header {
   background-color: white;
   border-bottom: solid lightgrey 2px;
+  height: 75px;
+}
+
+.body_relative {
+  position:relative;
+  margin-top: 75px;
 }
 
 h2 {
