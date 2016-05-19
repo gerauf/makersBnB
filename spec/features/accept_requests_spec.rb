@@ -20,12 +20,4 @@ feature "accepting requests" do
     end
   end
 
-  # xscenario 'clicking accept accepts the request' do
-  #
-  # end
-  #
-  # xscenario 'clicking reject rejects the request' do
-  #
-  # end
-
 end

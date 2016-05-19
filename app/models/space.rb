@@ -8,5 +8,6 @@ class Space
   property :price, Integer
 
   has n, :requests
+  has n, :availabilities
 
 end
