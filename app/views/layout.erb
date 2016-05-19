@@ -5,38 +5,59 @@
   integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
   crossorigin="anonymous">
   <link rel="stylesheet" href="/styles.css" type="text/css">
-
   <title>MakersBnB</title>
+
 </head>
 <body>
+<header class="navbar-fixed-top">
 
-  <h2>MakersBnB</h2>
   <div class="container">
-    <%if current_user %>
-    <span class="marasclass" id="milosid">Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
-      <a href="/spaces/new">spaces</a><span> |</span>
-      <a href="/requests">requests</a><span> |</span>
+    <div class="row">
+      <div class="col-md-10">
+        <h2>MakersBnB<small> it's awesome</small></h2>
+        <% if flash[:errors]%>
+        <%= flash[:errors]%>
+        <% end %>
 
-      <div class="form-group">
-        <form id="link_style" action="/sessions" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button type="submit" name="Log Out">Log Out</button>
-        </form>
+        <% if flash[:notice]%>
+        <%= flash[:notice]%>
+        <% end %>
+
       </div>
-    <% else%>
-      <a href="#">About</a>
-      <a href="/sessions/new">login</a>
-    <% end %>
+      <div class="col-md-2 text-right">
+        <%if current_user %>
+        <span>Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+          <a href="/spaces">spaces</a><span> |</span>
+          <a href="/requests">requests</a><span> |</span>
+
+          <div class="form-group">
+            <form id="link_style" action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" name="Log Out">Log Out</button>
+            </form>
+          </div>
+        <% else%>
+          <a href="#">About</a><span> |</span>
+          <a href="/sessions/new">log in</a><span> |</span>
+          <a href="/">sign up</a>
+        <% end %>
+      </div>
+    </div>
   </div>
+</header>
 
-  <% if flash[:errors]%>
-    <%= flash[:errors]%>
-  <% end %>
 
-  <% if flash[:notice]%>
-    <%= flash[:notice]%>
-  <% end %>
-
+<section class="body_relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
     <%=yield%>
+      </div>
+      <div class="col-md-7">
+        <img src="http://static6.businessinsider.com/image/524b1b1969bedd761340fdc1-1200/cabin-loft-sitting-area.jpg"/>
+      </div>
+    </div>
+  </div>
+</section>
 
 </body>

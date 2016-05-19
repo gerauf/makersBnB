@@ -1,25 +1,27 @@
+
 <div class="header">
   <h3>Your details</h3>
 </div>
-<form action='/users' method='post'>
-  <div id='fields'>
-    <label for='first_name'>first name</label>
-      <p><input type='text' name='first_name' value="<%=@user.first_name%>"></p>
+<div class="form-group">
+  <form action='/users' method='post'>
+    <div id='fields'>
+      <label for='first_name'>first name</label>
+        <p><input class="form-control" type='text' name='first_name' placeholder="Enter first name" value="<%=@user.first_name%>"></p>
 
-    <label for='last_name'>last name</label>
-      <p><input type='text' name='last_name' value="<%=@user.last_name%>"></p>
+      <label for='last_name'>last name</label>
+        <p><input class="form-control" type='text' name='last_name' placeholder="Enter last name" value="<%=@user.last_name%>"></p>
 
-    <label for='email'>email</label>
-      <p><input type='email' name='email' value="<%=@user.email%>"></p>
+      <label for='email'>email</label>
+        <p><input class="form-control" type='email' name='email' placeholder="Enter email" value="<%=@user.email%>"></p>
 
-    <label for='password'>password:</label>
-      <p><input type='password' name='password'></p>
+      <label for='password'>password:</label>
+        <p><input class="form-control" type='password' name='password' placeholder="Enter password"></p>
 
-    <label for='password_confirm'>confirm password:</label>
-      <p><input type='password' name='password_confirm'></p>
-  </div>
-
-  <div id='submit'>
-    <p><input type='submit' value='Create Account'><p>
-  </div>
-</form>
+      <label for='password_confirm'>confirm password:</label>
+        <p><input class="form-control" type='password' name='password_confirm' placeholder="Confirm password"></p>
+    </div>
+    <div id='submit'>
+      <p><button class="btn btn-danger" type='submit'>Create Account</button><p>
+    </div>
+  </form>
+</div>

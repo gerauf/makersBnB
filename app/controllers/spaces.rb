@@ -2,7 +2,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @spaces = Space.all
-    erb :index
+    erb :'spaces/index'
   end
 
   get '/spaces/new' do
@@ -16,5 +16,5 @@ class MakersBnB < Sinatra::Base
     space.save
     redirect '/spaces'
   end
-  
+
 end

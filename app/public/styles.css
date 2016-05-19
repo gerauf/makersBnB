@@ -5,34 +5,39 @@
 
 }
 
-.fergsarea {
-  padding:  7px;
-  margin-top: 10px;
-  margin-left: 5px;
+
+header {
+  background-color: white;
+  border-bottom: solid lightgrey 2px;
+  height: 75px;
 }
 
-.marasclass {
-  color: black;
-  border: solid grey 1px;
-  border-radius: 5%;
+.body_relative {
+  position:relative;
+  margin-top: 75px;
 }
 
-#milosid {
-  color: green
-}
-
-.marasclass {
-  color: pink;
+h2 {
+  color: #D9534F;
 }
 
 
 
-
+#spaces {
+  padding-left: 0px;
+}
 
 .space {
-  border: solid grey 2px;
+  background-color: white;
+  border: solid lightgrey 2px;
   margin: 5px;
-  padding: 4px;
+  padding-top: 5px;
+  height: 150px;
+  border-bottom-right-radius: 5%;
+}
+
+body {
+  background-color: #F5F5F5;
 }
 
 .space_desc {
@@ -48,5 +53,6 @@
 
 .space_head {
   margin-top: 2px;
-  color: red;
+  margin-bottom: 15px;
+
 }
