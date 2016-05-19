@@ -24,7 +24,7 @@ class MakersBnB < Sinatra::Base
     end
 
     def own_space? space_id
-      current_user.spaces.include? Space.first(space_id)
+      current_user.id == Space.get(space_id).user_id
     end
   end
 

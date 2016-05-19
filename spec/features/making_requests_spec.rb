@@ -28,6 +28,12 @@ feature 'making requests' do
 
   scenario "can't book own space" do
     sign_up_and_create_space
+      click_button 'Log Out'
+      click_link 'log in'
+      fill_in :login_email, with: 'a@gmail.com'
+      fill_in :login_password, with: '123'
+      click_button "Log In"
+      visit '/spaces'
       within 'ul#spaces' do
         expect{click_button "Request to book"}.not_to change(Request, :count)
       end
@@ -43,5 +49,4 @@ feature 'making requests' do
       expect{click_button "Request to book"}.not_to change(Request, :count)
     end
   end
-
 end
