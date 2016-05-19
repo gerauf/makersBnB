@@ -10,12 +10,12 @@ class MakersBnB < Sinatra::Base
 
   get '/requests' do
     @requests_made = Request.all(user_id: current_user.id)
-    # owner = Space.all.user
-    owned_spaces = Space.first(user_id: current_user.id)
-    if owned_spaces != nil
-      @requests_received = Request.all(space_id: owned_spaces.id)
+    arr= []
+    owned_spaces = Space.all(user_id: current_user.id)
+    owned_spaces.each {|space| arr << space.user_id}
+    if owned_spaces
+      @requests_received = Request.all(space_id: arr)
     end
     erb :'requests/index'
   end
-
 end
