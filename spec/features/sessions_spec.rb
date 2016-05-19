@@ -23,6 +23,7 @@ feature 'Sessions' do
     sign_up new_user
     click_button "Create Account"
     click_button 'Log Out'
+    click_link 'log in'
     fill_in :login_email, with: "a@gmail.com"
     fill_in :login_password, with: "123"
     click_button 'Log In'

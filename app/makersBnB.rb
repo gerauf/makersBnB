@@ -24,13 +24,13 @@ class MakersBnB < Sinatra::Base
     end
 
     def own_space? space_id
-      current_user.spaces.include? Space.first(space_id)
+      current_user.id == Space.get(space_id).user_id
     end
   end
 
   get '/' do
-    @spaces = Space.all
-    erb :index
+    @user = User.new
+    erb :'users/new'
   end
 
   # start the server if ruby file executed directly

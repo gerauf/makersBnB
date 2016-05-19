@@ -8,3 +8,15 @@
   <li>Not confirmed</li>
   <%end%>
 </ul>
+
+<ul class="requests_received">
+  <h3>Requests I've Received</h3>
+  <% if @requests_received != nil %>
+    <%@requests_received.each do |request|%>
+    <%space = Space.first(id: request.space_id)%>
+    <li><%=space.name%></li>
+    <li>Confirm</li>
+    <li>Reject</li>
+    <%end%>
+  <%end%>
+</ul>

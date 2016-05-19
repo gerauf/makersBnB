@@ -1,41 +1,63 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/styles.css" type="text/css">
-    <title>MakersBnB</title>
-  </head>
+<html lang='en'>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+  integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+  crossorigin="anonymous">
+  <link rel="stylesheet" href="/styles.css" type="text/css">
+  <title>MakersBnB</title>
 
-  <body>
+</head>
+<body>
+<header class="navbar-fixed-top">
 
-    <% if current_user %>
-    Logged in as: <%= current_user.first_name + " " + current_user.last_name %>
-    <form action="/sessions" method="post">
-      <input type="hidden" name="_method" value="delete">
-      <button type="submit" name="Log Out">Log Out</button>
-    </form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h2>MakersBnB<small> it's awesome</small></h2>
+        <% if flash[:errors]%>
+        <%= flash[:errors]%>
+        <% end %>
 
-    <% else %>
+        <% if flash[:notice]%>
+        <%= flash[:notice]%>
+        <% end %>
 
-    <form action="/sessions" method="post">
-      Email: <input type="email" name="login_email">
-      Password: <input type="password" name="login_password">
-      <button type="submit"> Log In </button>
-    </form>
+      </div>
+      <div class="col-md-2 text-right">
+        <%if current_user %>
+        <span>Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
+          <a href="/spaces">spaces</a><span> |</span>
+          <a href="/requests">requests</a><span> |</span>
 
-    <% end %>
-
-    <% if flash[:errors]%>
-    <%= flash[:errors]%>
-    <% end %>
-
-    <div id="log_out">
-      <% if flash[:notice]%>
-      <%= flash[:notice]%>
-      <% end %>
+          <div class="form-group">
+            <form id="link_style" action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" name="Log Out">Log Out</button>
+            </form>
+          </div>
+        <% else%>
+          <a href="#">About</a><span> |</span>
+          <a href="/sessions/new">log in</a><span> |</span>
+          <a href="/">sign up</a>
+        <% end %>
+      </div>
     </div>
+  </div>
+</header>
 
+
+<section class="body_relative">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
     <%=yield%>
+      </div>
+      <div class="col-md-7">
+        <img src="http://static6.businessinsider.com/image/524b1b1969bedd761340fdc1-1200/cabin-loft-sitting-area.jpg"/>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-  </body>
-</html>
+</body>

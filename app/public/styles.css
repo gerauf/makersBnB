@@ -1,19 +1,58 @@
+
+#link_style {
+  border: none;
+  color: blue;
+
+}
+
+
+header {
+  background-color: white;
+  border-bottom: solid lightgrey 2px;
+  height: 75px;
+}
+
+.body_relative {
+  position:relative;
+  margin-top: 75px;
+}
+
+h2 {
+  color: #D9534F;
+}
+
+
+
+#spaces {
+  padding-left: 0px;
+}
+
 .space {
-  border: solid grey 2px;
+  background-color: white;
+  border: solid lightgrey 2px;
   margin: 5px;
-  padding: 4px;
+  padding-top: 5px;
+  height: 150px;
+  border-bottom-right-radius: 5%;
+}
+
+body {
+  background-color: #F5F5F5;
 }
 
 .space_desc {
 
 }
 
-
+.container {
+  /*background: black;*/
+}
 .space_cost {
 
 }
 
 .space_head {
   margin-top: 2px;
-  color: red;
+  margin-bottom: 15px;
+
 }

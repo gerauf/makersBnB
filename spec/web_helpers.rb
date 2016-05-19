@@ -1,5 +1,5 @@
 def sign_up(details={})
-  visit '/users/new'
+  visit '/'
   fill_in :first_name, with: details[:first_name]
   fill_in :last_name, with: details[:last_name]
   fill_in :email, with: details[:email]

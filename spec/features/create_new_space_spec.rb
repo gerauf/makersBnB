@@ -7,7 +7,6 @@ feature "create spaces" do
     visit '/spaces/new'
     create_space
     expect{click_button("create space")}.to change(Space, :count).by 1
-    expect(current_path).to eq '/'
     within "ul#spaces" do
       expect(page).to have_content "Commercial Road"
       expect(page).to have_content "Tidy little place"

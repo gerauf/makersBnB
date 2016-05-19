@@ -3,7 +3,6 @@ feature "registering" do
   scenario "creating an account" do
     sign_up new_user
     expect{click_button "Create Account"}.to change(User, :count).by 1
-    expect(current_path).to eq '/'
     expect(page).to have_content "Logged in as: andy peters"
   end
 
