@@ -29,8 +29,8 @@ feature "availability" do
     fill_in :end_date, with: '2016-05-25'
     click_button "Search"
     within "ul#spaces" do
-      expect(page).not_to have_content("Bow Road")
-      expect(page).to have_content("Commercial Road")
+      expect(page).to have_content("Bow Road")
+      expect(page).not_to have_content("Commercial Road")
     end
   end
 
