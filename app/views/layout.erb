@@ -13,7 +13,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-7">
         <h2>MakersBnB<small> it's awesome</small></h2>
         <% if flash[:errors]%>
         <%= flash[:errors]%>
@@ -24,23 +24,27 @@
         <% end %>
 
       </div>
-      <div class="col-md-2 text-right">
-        <%if current_user %>
-        <span>Logged in as: <%= current_user.first_name + " " + current_user.last_name %></span>
-          <a href="/spaces">spaces</a><span> |</span>
-          <a href="/requests">requests</a><span> |</span>
+      <div class="col-md-5 text-right">
+        <div class="row">
 
-          <div class="form-group">
-            <form id="link_style" action="/sessions" method="post">
-              <input type="hidden" name="_method" value="delete">
-              <button type="submit" name="Log Out">Log Out</button>
-            </form>
+          <%if current_user %>
+          <a href="/spaces">spaces</a><span> |</span>
+          <a href="/requests">requests</a>
+          <div class="row">
+            <div class="">
+              <form id="link_style" action="/sessions" method="post">
+                <span id="log_in_as">logged in as: <%= current_user.first_name + " " + current_user.last_name%></span>
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn btn-danger btn-xs" type="submit" name="log out">log out</button>
+              </form>
+            </div>
           </div>
-        <% else%>
+          <% else%>
           <a href="#">About</a><span> |</span>
           <a href="/sessions/new">log in</a><span> |</span>
           <a href="/">sign up</a>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

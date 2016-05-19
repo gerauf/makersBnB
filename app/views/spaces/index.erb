@@ -1,16 +1,26 @@
 
-<section id="search_area">
-  <h3>
-  <form action="/spaces/search" method="post">
-    <h4>Start Date</h4>
-      <input type="date" name="start_date" value="<%=@dates.first%>">
-      <h4>End Date</h4>
-      <input type="date" name="end_date" value="<%=@dates.last%>">
-      <p>
-      </p>
-    <button class="btn btn-danger btn-sm" type="submit">Search</button>
-  </form>
-</section>
+<div class="row">
+  <section id="search_area">
+    <h4>Search for your dream holiday</h4>
+    <div class="row">
+        <form class="" action="/spaces/search" method="post">
+          <div class="col-md-4">
+          <h5>Start Date</h5>
+          <input type="date" name="start_date" value="<%=@dates.first%>">
+          <p>
+          </p>
+          <button class="btn btn-danger btn-sm" type="submit">Search</button>
+      </div>
+      <div class="col-md-8">
+        <h5>End Date</h5>
+        <input type="date" name="end_date" value="<%=@dates.last%>">
+      </div>
+      </form>
+
+
+    </div>
+    </section>
+</div>
 
 
 
@@ -25,12 +35,14 @@
       <span class="space_cost">Cost per night £<%=space.price%></span>
     </div>
     <div class="col-md-4">
+      <% if current_user %>
       <form action='/requests' method="post">
         <p>
-          <input type="hidden" name="space_id" value="<%=space.id%>">
+          <input type="hidden" name="space_id" value=<%=space.id%>>
           <button class="btn btn-danger btn-sm" type="submit" name="Request">Request to book</button>
         </p>
       </form>
+      <% end %>
     </div>
     </article>
   </div>

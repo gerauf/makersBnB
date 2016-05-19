@@ -8,7 +8,7 @@ class MakersBnB < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
-    flash.keep[:notice] = 'Log Out complete. Thanks!'
+    flash.keep[:notice] = 'log out complete. Thanks!'
     redirect '/spaces'
    end
 
@@ -16,8 +16,6 @@ class MakersBnB < Sinatra::Base
     @user = User.authenticate(params[:login_email], params[:login_password])
     if @user
       session[:user_id] = @user.id
-    # else
-    #   flash.now[:errors] = @user.errors.full_messages
     end
     redirect '/spaces'
   end
