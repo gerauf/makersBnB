@@ -1,7 +1,7 @@
 feature "availability" do
   scenario "choose availability for new space" do
     sign_up new_user
-    click_button "Create Account"
+    click_button "create account"
     visit '/spaces/new'
     create_space
     fill_in :start_date, with: '2016-05-19'
@@ -13,7 +13,7 @@ feature "availability" do
 
   scenario "only show spaces which are available for the whole period" do
     sign_up new_user
-    click_button "Create Account"
+    click_button "create account"
     visit '/spaces/new'
     create_space
     fill_in :start_date, with: '2016-05-19'
@@ -25,7 +25,7 @@ feature "availability" do
     fill_in :end_date, with: '2016-05-27'
     click_button 'create space'
     visit '/spaces'
-    fill_in :start_date, with: '2016-05-19'
+    fill_in :start_date, with: '2016-05-20'
     fill_in :end_date, with: '2016-05-25'
     click_button "Search"
     within "ul#spaces" do
@@ -36,7 +36,7 @@ feature "availability" do
 
   scenario "if no search criteria, show all spaces" do
     sign_up new_user
-    click_button "Create Account"
+    click_button "create account"
     visit '/spaces/new'
     create_space
     fill_in :start_date, with: '2016-05-19'

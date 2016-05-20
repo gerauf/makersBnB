@@ -1,8 +1,6 @@
 
-#link_style {
-  border: none;
-  color: blue;
-
+body {
+  background-color: #F5F5F5;
 }
 
 
@@ -12,33 +10,30 @@ header {
   height: 75px;
 }
 
+h2 {
+  color: #D9534F;
+}
+
+h4 {
+  color: #D9534F;
+}
+
 .body_relative {
   position:relative;
   margin-top: 75px;
 }
 
-h2 {
-  color: #D9534F;
-}
-
-
-
-#spaces {
-  padding-left: 0px;
-}
-
 .space {
   background-color: white;
-  border: solid lightgrey 2px;
+  border: solid lightgrey 1.5px;
   margin: 5px;
   padding-top: 5px;
   height: 150px;
   border-bottom-right-radius: 5%;
 }
 
-body {
-  background-color: #F5F5F5;
-}
+
+
 
 .space_desc {
 
@@ -54,5 +49,19 @@ body {
 .space_head {
   margin-top: 2px;
   margin-bottom: 15px;
+}
 
+#spaces {
+  padding-left: 0px;
+}
+
+#search_area {
+  padding-bottom: 10px;
+  margin: 10px;
+  border-bottom: solid lightgrey 1.5px;
+
+}
+
+#log_in_as {
+  margin-right: 8px;
 }

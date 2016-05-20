@@ -41,7 +41,7 @@ end
 
 def sign_up_and_create_space
   sign_up new_user
-  click_button "Create Account"
+  click_button "create account"
   visit '/spaces/new'
   create_space
   click_button 'create space'

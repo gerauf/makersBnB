@@ -2,7 +2,7 @@ feature "create spaces" do
   scenario "create new space" do
     visit '/users/new'
       sign_up(new_user)
-      click_button "Create Account"
+      click_button "create account"
 
     visit '/spaces/new'
     create_space
@@ -17,7 +17,7 @@ feature "create spaces" do
   scenario "user can create multiple spaces" do
     visit '/users/new'
       sign_up(new_user)
-      click_button "Create Account"
+      click_button "create account"
     visit '/spaces/new'
     create_space
     click_button("create space")
