@@ -4,6 +4,7 @@ class MakersBnB < Sinatra::Base
     available_spaces = session[:available_spaces]
     dates = session[:dates]
     @spaces = available_spaces ? Space.all(id: available_spaces) : Space.all
+    @images = SpaceImage.all
     @dates = dates ? dates : ["",""]
     erb :'spaces/index'
   end
@@ -26,6 +27,8 @@ class MakersBnB < Sinatra::Base
                                         price: params[:price])
     availability = space.availabilities.create(start_date: params[:start_date],
                                                end_date: params[:end_date])
+
+    image = space.space_images.create(image: params[:photo])
     redirect '/spaces'
   end
 end
