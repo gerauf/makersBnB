@@ -26,12 +26,20 @@
   <% @spaces.each do |space| %>
   <div class="row">
     <article class="space">
-    <div class="col-md-8">
+    <div class="col-md-5">
 
         <h2 class="space_head"><%=space.name %></h2>
       <span class="space_desc"><%=space.description%></span><br>
       <span class="space_cost">Cost per night £<%=space.price%></span>
     </div>
+    <div class="col-md-3" id="space_photo">
+
+      <%space_image = @images.find{|image| image.space_id == space.id}%>
+      <%if space_image.image.file != nil%>
+      <img src="<%=space_image.image.file.file.gsub("/Users/fergyo/Projects/makersBnB/app/public","")%>" height=100% width=100%/>
+      <% end %>
+    </div>
+
     <div class="col-md-4">
       <% if current_user %>
       <form action='/requests' method="post">

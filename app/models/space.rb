@@ -9,5 +9,6 @@ class Space
 
   has n, :requests
   has n, :availabilities
+  has n, :space_images
 
 end

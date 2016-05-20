@@ -1,14 +1,42 @@
+
 <div class="container">
 
 
-  <form action="/spaces" method="post" id="space_input">
+  <form action="/spaces" method="post" id="space_input" enctype="multipart/form-data">
     <p>Property name<br><input type="text" name="name"></p>
     <p>Description<br>
       <textarea class="form-control" rows="4" cols="40" form="space_input" name="description"></textarea>
     </p>
-    <p>Cost per night<br><input type="number" name="price"></p>
-    <p>Availability of space<br><input class="start_date" type="date" name="start_date"></p>
-    <p><input class="end_date" type="date" name="end_date"></p>
+
+    <div class="row">
+      <div class="col-md-2">
+        <p>
+          Cost per night<br><input type="number" name="price"></p>
+          <p>Availability of space<br>
+          <p><input class="start_date" type="date" name="start_date"></p>
+          <p><input class="end_date" type="date" name="end_date"></p>
+        </p>
+      </div>
+      <div class="col-md-2">
+        <p><input type="file" name="photo" onchange="readURL(this);" /></p>
+        <img id="blah" src="#" alt="your image" />
+        <script type="text/javascript">
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $('#blah').attr('src', e.target.result)
+              .width(100)
+              .height(100);
+            };
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+        </script>
+
+      </div>
+
+    </div>
 
     <button class="btn btn-danger" type="submit" name="create space">create space</button>
   </form>
