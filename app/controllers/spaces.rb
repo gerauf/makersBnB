@@ -3,14 +3,12 @@ class MakersBnB < Sinatra::Base
   get '/spaces' do
     available_spaces = session[:available_spaces]
     dates = session[:dates]
-    p available_spaces
     @spaces = available_spaces ? Space.all(id: available_spaces) : Space.all
     @dates = dates ? dates : ["",""]
     erb :'spaces/index'
   end
 
   post '/spaces/search' do
-    p params[:end_date]
     search = Availability.all(:start_date.lte => params[:start_date],
                                  :end_date.gte => params[:end_date])
     session[:dates] = [params[:start_date], params[:end_date]]
