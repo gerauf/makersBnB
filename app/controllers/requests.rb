@@ -10,9 +10,9 @@ class MakersBnB < Sinatra::Base
                               space_id: space_id,
                               start_date: start_date,
                               end_date: end_date) unless own_space? space_id
-      flash.now[:notice] = "Request made" 
+      flash.now[:notice] = "Request made"
     else
-      flash.now[:notice] = "Please select dates for booking request!" 
+      flash.now[:notice] = "Please select dates for booking request!"
     end
     redirect '/spaces'
   end
@@ -29,12 +29,12 @@ class MakersBnB < Sinatra::Base
     current_request.booked = true
     current_request.save
     redirect '/requests'
-  end 
+  end
 
   delete '/requests/deny/:id' do
-    Request.first(params['id']).delete
+    Request.first(id: params['id']).destroy
     redirect '/requests'
-  end 
+  end
 
 
 end

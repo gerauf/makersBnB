@@ -1,37 +1,64 @@
 <h1>Requests</h1>
+<div class="container">
 
-<ul class="requests_made">
-  <h3>Requests I've made</h3>
-  <%@requests_made.each do |request|%>
-  <%space = request.space%>
-  <li><%=space.name%></li>
-  <li><%=request.start_date.strftime('%Y-%-m-%-d')%></li>
-  <li><%=request.end_date.strftime('%Y-%-m-%-d')%></li>
-  <li>Booking confirmed? <%=request.booked%></li>
-  <%end%>
-</ul>
+  <div class="row">
+    <h4>Requests I've made</h4>
+    <div class="col-md-4">
+      <% if @requests_made != nil %>
+      <ul class="requests_made">
+        <%@requests_made.each do |request|%>
+        <%space = request.space%>
+        <li class="requests">
+          <h5><%=space.name%></h5>
+          <p>Start of booking: <%=request.start_date.strftime('%Y-%-m-%-d')%></p>
+          <p>End of booking:   <%=request.end_date.strftime('%Y-%-m-%-d')%></p>
+          <% if request.booked%>
+          <h5>Booking confirmed</h5>
+          <%else%>
+          <h5>Awaiting confirmation</h5>
+          <%end%>
+        </li>
+        <%end%>
+      </ul>
+      <%end%>
+    </div>
+  </div>
 
-<% if @requests_received != nil %>
-  <h3>Requests I've received</h3>
-  <ul class="requests_received">
-    <%@requests_received.each do |request|%>
-      <% space = request.space %>
-      <li id="request_<%=request.id %>">
-        <p><%=space.name%></p>
-        <p><%=request.start_date.strftime('%Y-%-m-%-d')%></p>
-        <p><%=request.end_date.strftime('%Y-%-m-%-d')%></p>
-        <p>Booking confirmed? <%=request.booked%></p>
+  <div class="row">
+      <% if @requests_received != nil %>
+      <h4>Requests I've received</h4>
+      <div class="col-md-4">
+      <ul class="requests_received">
+        <%@requests_received.each do |request|%>
+        <% space = request.space %>
 
-        <form action="/requests/confirm/<%=request.id%>" method="post">
-          <input type="hidden" name="_method" value="put">
-          <button class="btn btn-danger" type="submit">confirm booking</button>
-        </form>
-        <br>
-        <form action="/requests/deny/<%=request.id%>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <button class="btn btn-danger" type="submit">reject booking</button>
-        </form>
-      </li>
-    <%end%>
-  <%end%>
-</ul>
+          <li class="requests" id="received">
+            <div class="col-md-7">
+              <h5><%=space.name%></h5>
+              <p>Start of booking: <%=request.start_date.strftime('%Y-%-m-%-d')%></p>
+              <p>End of booking:   <%=request.end_date.strftime('%Y-%-m-%-d')%></p>
+            </div>
+            <div class="col-md-1 text-centre">
+              <% if request.booked%>
+              <h5>Booking confirmed</h5>
+              <%else%>
+              <h5>Awaiting confirmation</h5>
+              <form action="/requests/confirm/<%=request.id%>" method="post">
+                <input type="hidden" name="_method" value="put">
+                <button class="btn btn-danger btn-xs" id="acceptance_buttons" type="submit">confirm</button>
+              </form>
+              <form action="/requests/deny/<%=request.id%>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn btn-danger btn-xs"  id="acceptance_buttons" type="submit">reject</button>
+              </form>
+              <%end%>
+              <br>
+            </div>
+            </li>
+        <%end%>
+      </ul>
+    </div>
+      <%end%>
+
+  </div>
+</div>

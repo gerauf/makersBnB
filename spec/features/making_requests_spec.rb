@@ -15,7 +15,7 @@ feature 'making requests' do
     visit '/spaces'
     fill_in :start_date, with: '2016-05-19'
     fill_in :end_date, with: '2016-05-20'
-    click_button "Search"    
+    click_button "Search"
     within 'ul#spaces' do
        expect{click_button "Request to book"}.to change(Request, :count).by 1
     end
@@ -23,10 +23,10 @@ feature 'making requests' do
     within "h1" do
       expect(page).to have_content "Requests"
     end
+    expect(page).to have_content "Requests I've made"
     within "ul.requests_made" do
-      expect(page).to have_content "Requests I've made"
       expect(page).to have_content "Commercial Road"
-      expect(page).to have_content "Booking confirmed? false"
+      expect(page).to have_content "Awaiting confirmation"
     end
   end
 
@@ -36,11 +36,11 @@ feature 'making requests' do
       click_link 'log in'
       fill_in :login_email, with: 'a@gmail.com'
       fill_in :login_password, with: '123'
-      click_button "log in"    
+      click_button "log in"
       visit '/spaces'
       fill_in :start_date, with: '2016-05-19'
       fill_in :end_date, with: '2016-05-20'
-      click_button "Search"    
+      click_button "Search"
       within 'ul#spaces' do
         expect{click_button "Request to book"}.not_to change(Request, :count)
       end
@@ -54,7 +54,7 @@ feature 'making requests' do
     visit '/spaces'
     fill_in :start_date, with: '2016-05-19'
     fill_in :end_date, with: '2016-05-20'
-    click_button "Search"    
+    click_button "Search"
     within 'ul#spaces' do
       expect{click_button "Request to book"}.to change(Request, :count).by 1
       expect{click_button "Request to book"}.not_to change(Request, :count)

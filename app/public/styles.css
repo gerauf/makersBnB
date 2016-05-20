@@ -55,8 +55,29 @@ h4 {
   width: 40%;
 }
 
+.requests {
+  background-color: white;
+  border: solid lightgrey 1.5px;
+  margin: 5px;
+  padding-top: 5px;
+  padding-left: 20px;
+  height: 130px;
+  border-bottom-right-radius: 5%;
+  list-style-type: none;
+}
+
+#received {
+  height: 180px;
+
+}
+
 #spaces {
   padding-left: 0px;
+}
+
+#acceptance_buttons {
+  width: 55px;
+  margin-bottom: 5px;
 }
 
 #search_area {
