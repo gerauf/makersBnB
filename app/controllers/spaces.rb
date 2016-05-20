@@ -23,12 +23,11 @@ class MakersBnB < Sinatra::Base
 
   post '/spaces' do
     space = current_user.spaces.create(name: params[:name],
-                                        description: params[:description],
+                                       description: params[:description],
                                         price: params[:price])
-    availability = space.availabilities.create(start_date: params[:start_date],
-                                               end_date: params[:end_date])
-
-    image = space.space_images.create(image: params[:photo])
+    space.availabilities.create(start_date: params[:start_date],
+                                end_date: params[:end_date])
+    space.space_images.create(image: params[:photo])
     redirect '/spaces'
   end
 end
