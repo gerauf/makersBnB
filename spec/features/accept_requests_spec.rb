@@ -15,8 +15,8 @@ feature "accepting requests" do
     fill_in :login_password, with: "123"
     click_button 'log in'
     visit '/requests'
+    expect(page).to have_content "Requests I've received"
     within 'ul.requests_received' do
-      expect(page).to have_content "Requests I've received"
       expect(page).to have_content "Commercial Road"
       expect(page).to have_button "confirm booking"
       expect(page).to have_button "reject booking"

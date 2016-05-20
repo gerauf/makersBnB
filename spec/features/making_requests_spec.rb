@@ -88,8 +88,8 @@ feature 'making requests' do
     click_button "Request to book"
     visit '/requests'
     within 'ul.requests_made' do
-      expect(page).to have_content "2016-05-19"
-      expect(page).to have_content "2016-05-20"
+      expect(page).to have_content "2016-5-19"
+      expect(page).to have_content "2016-5-20"
     end
   end
 
@@ -105,6 +105,7 @@ feature 'making requests' do
     sign_up keith_lemon
     click_button "create account"
     visit '/spaces'
-    expect{click_button "Request to book"}.to raise_error("Please select dates for booking request!")
+    expect{click_button "Request to book"}.not_to change(Space, :count)
+    expect{click_button "Request to book"}.not_to change(Availability, :count)
   end
 end
