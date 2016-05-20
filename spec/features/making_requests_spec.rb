@@ -12,6 +12,10 @@ feature 'making requests' do
     click_button 'log out'
     sign_up keith_lemon
     click_button "create account"
+    visit '/spaces'
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-20'
+    click_button "Search"    
     within 'ul#spaces' do
        expect{click_button "Request to book"}.to change(Request, :count).by 1
     end
@@ -22,7 +26,7 @@ feature 'making requests' do
     within "ul.requests_made" do
       expect(page).to have_content "Requests I've made"
       expect(page).to have_content "Commercial Road"
-      expect(page).to have_content "Not confirmed"
+      expect(page).to have_content "Booking confirmed? false"
     end
   end
 
@@ -32,8 +36,11 @@ feature 'making requests' do
       click_link 'log in'
       fill_in :login_email, with: 'a@gmail.com'
       fill_in :login_password, with: '123'
-      click_button "log in"
+      click_button "log in"    
       visit '/spaces'
+      fill_in :start_date, with: '2016-05-19'
+      fill_in :end_date, with: '2016-05-20'
+      click_button "Search"    
       within 'ul#spaces' do
         expect{click_button "Request to book"}.not_to change(Request, :count)
       end
@@ -44,6 +51,10 @@ feature 'making requests' do
     click_button 'log out'
     sign_up keith_lemon
     click_button "create account"
+    visit '/spaces'
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-20'
+    click_button "Search"    
     within 'ul#spaces' do
       expect{click_button "Request to book"}.to change(Request, :count).by 1
       expect{click_button "Request to book"}.not_to change(Request, :count)
@@ -57,5 +68,43 @@ feature 'making requests' do
     within 'ul#spaces' do
       expect(page).not_to have_content "Request to book"
     end
+  end
+
+  scenario "request should have start and end date of booking" do
+    sign_up new_user
+    click_button "create account"
+    visit '/spaces/new'
+    create_space
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-23'
+    click_button 'create space'
+    click_button 'log out'
+    sign_up keith_lemon
+    click_button "create account"
+    visit '/spaces'
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-20'
+    click_button "Search"
+    click_button "Request to book"
+    visit '/requests'
+    within 'ul.requests_made' do
+      expect(page).to have_content "2016-05-19"
+      expect(page).to have_content "2016-05-20"
+    end
+  end
+
+  scenario "can't book without selecting dates first" do
+    sign_up new_user
+    click_button "create account"
+    visit '/spaces/new'
+    create_space
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-23'
+    click_button 'create space'
+    click_button 'log out'
+    sign_up keith_lemon
+    click_button "create account"
+    visit '/spaces'
+    expect{click_button "Request to book"}.to raise_error("Please select dates for booking request!")
   end
 end

@@ -5,6 +5,9 @@ feature "accepting requests" do
     sign_up keith_lemon
     click_button 'create account'
     visit '/spaces'
+    fill_in :start_date, with: '2016-05-19'
+    fill_in :end_date, with: '2016-05-20'
+    click_button "Search"
     click_button "Request to book"
     click_button 'log out'
     click_link 'log in'
@@ -13,10 +16,10 @@ feature "accepting requests" do
     click_button 'log in'
     visit '/requests'
     within 'ul.requests_received' do
-      expect(page).to have_content "Requests I've Received"
+      expect(page).to have_content "Requests I've received"
       expect(page).to have_content "Commercial Road"
-      expect(page).to have_content "Confirm"
-      expect(page).to have_content "Reject"
+      expect(page).to have_button "confirm booking"
+      expect(page).to have_button "reject booking"
     end
   end
 

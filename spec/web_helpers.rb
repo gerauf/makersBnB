@@ -28,9 +28,12 @@ def bad_password_user
 end
 
 def create_space
+  fill_in :start_date, with: '2016-05-19'
+  fill_in :end_date, with: '2017-05-20'
   fill_in :name, with: "Commercial Road"
   fill_in :description, with: "Tidy little place"
   fill_in :price, with: 100
+
 end
 
 def create_second_space
